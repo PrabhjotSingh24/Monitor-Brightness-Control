@@ -20,7 +20,10 @@ def set_state(v):
     def inner(icon, item):
         global state
         state = v
-        sbc.fade_brightness(int(item.text.split()[-1]),logarithmic=True,interval=0.0001,increment=5)
+        if v<101: 
+           sbc.fade_brightness(v,logarithmic=True,interval=0.0001,increment=5) 
+        else:
+            icon.stop()
     return inner
 
 def get_state(v):
@@ -36,4 +39,4 @@ icon('test', create_image(64,64,'black','white'), menu=menu(lambda: (
         set_state(i),
         checked=get_state(i),
         radio=True)
-    for i in range(0,101,5)))).run()
+    for i in range(0,106,5)))).run()
